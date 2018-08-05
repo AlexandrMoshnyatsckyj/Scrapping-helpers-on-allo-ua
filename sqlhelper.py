@@ -20,6 +20,7 @@ class SQLUtils(object):
         self._cursor.execute('CREATE TABLE IF NOT EXISTS {}(chars TEXT, helper TEXT)'.format(self._table_name))
 
     def write(self, first_column, second_column):
+        self.get_cursor()
         self._cursor.execute('INSERT INTO {} VALUES("{}", "{}") '.format(self._table_name, first_column, second_column))
         self._connection.commit()
 
